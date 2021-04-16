@@ -4,16 +4,18 @@ fun main(args: Array<String>) {
 
     println("OMGHAI!")
 
-    val items = arrayOf(Item("+5 Dexterity Vest", 10, 20), //
-            Item("Aged Brie", 2, 0), //
-            Item("Elixir of the Mongoose", 5, 7), //
-            Item("Sulfuras, Hand of Ragnaros", 0, 80), //
-            Item("Sulfuras, Hand of Ragnaros", -1, 80),
-            Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-            Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-            Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+    val items = arrayOf(
+            ItemsLibrary.PLUS_5_DEXTERITY_VEST.toItem(10, 20), //
+            ItemsLibrary.AGED_BRIE.toItem(2, 0), //
+            ItemsLibrary.ELIXIR_OF_THE_MONGOOSE.toItem(5, 7), //
+            ItemsLibrary.SULFURAS_HAND_OF_RAGNAROS.toItem(0, 80), //
+            ItemsLibrary.SULFURAS_HAND_OF_RAGNAROS.toItem(-1, 80),
+            ItemsLibrary.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.toItem(15, 20),
+            ItemsLibrary.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.toItem(10, 49),
+            ItemsLibrary.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.toItem(5, 49),
             // this conjured item does not work properly yet
-            Item("Conjured Mana Cake", 3, 6))
+            ItemsLibrary.CONJURED_MANA_CAKE.toItem(3, 6)
+    )
 
     val app = GildedRose(items)
 
@@ -34,3 +36,4 @@ fun main(args: Array<String>) {
 
 
 }
+
