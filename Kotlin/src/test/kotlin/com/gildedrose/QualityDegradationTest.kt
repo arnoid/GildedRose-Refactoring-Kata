@@ -21,7 +21,7 @@ class QualityDegradationTest {
     }
 
     @Test
-    fun degradeQualityCheckSellInDegrades() {
+    fun updateQualityCheckSellInDegrades() {
         testItem.sellIn = 1
         gildedRose.updateQuality()//should drop to zero
         assertEquals(0, testItem.sellIn)
@@ -30,7 +30,7 @@ class QualityDegradationTest {
     }
 
     @Test
-    fun degradeQualityCheckQualityIsNonNegative() {
+    fun updateQualityCheckQualityIsNonNegative() {
         testItem.quality = 1
         gildedRose.updateQuality()//should drop to zero
         assertEquals(0, testItem.quality)
@@ -39,24 +39,22 @@ class QualityDegradationTest {
     }
 
     @Test
-    fun degradeQualityBeforeSellInCheckQualityDegradationSpeedIsDefault() {
-        val previousQualityValue = testItem.quality
+    fun updateQualityBeforeSellInCheckQualityDegradationSpeedIsDefault() {
         gildedRose.updateQuality()
 
         assertEquals(
-                previousQualityValue - GildedRose.QUALITY_DEGRADATION_DEFAULT,
+                QUALITY - GildedRose.QUALITY_DEGRADATION_DEFAULT,
                 testItem.quality
         )
     }
 
     @Test
-    fun degradeQualityAfterSellInCheckQualityDegradationSpeedIsIncreased() {
+    fun updateQualityAfterSellInCheckQualityDegradationSpeedIsIncreased() {
         testItem.sellIn = 0
-        val previousQualityValue = testItem.quality
         gildedRose.updateQuality()
 
         assertEquals(
-                previousQualityValue - GildedRose.QUALITY_DEGRADATION_DEFAULT_AFTER_SELL_IN,
+                QUALITY - GildedRose.QUALITY_DEGRADATION_DEFAULT_AFTER_SELL_IN,
                 testItem.quality
         )
     }

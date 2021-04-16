@@ -20,7 +20,7 @@ class AgedBrieTest {
     }
 
     @Test
-    fun degradeQualityCheckSellInDegrades() {
+    fun updateQualityCheckSellInDegrades() {
         testItem.sellIn = 1
         gildedRose.updateQuality()//should drop to zero
         Assertions.assertEquals(0, testItem.sellIn)
@@ -29,7 +29,7 @@ class AgedBrieTest {
     }
 
     @Test
-    fun degradeQualityCheckQualityIsNotGreaterThan50() {
+    fun updateQualityCheckQualityIsNotGreaterThan50() {
         testItem.quality = 49
         gildedRose.updateQuality()//should increment
         Assertions.assertEquals(50, testItem.quality)
@@ -38,25 +38,23 @@ class AgedBrieTest {
     }
 
     @Test
-    fun degradeQualityBeforeSellInCheckQualityImprovementSpeedIsDefault() {
-        val previousQualityValue = testItem.quality
+    fun updateQualityBeforeSellInCheckQualityImprovementSpeedIsDefault() {
         gildedRose.updateQuality()
 
         Assertions.assertEquals(
-                previousQualityValue + GildedRose.QUALITY_DEGRADATION_DEFAULT,
+                QUALITY + GildedRose.QUALITY_DEGRADATION_DEFAULT,
                 testItem.quality
         )
     }
 
     @Test
-    fun degradeQualityAfterSellInCheckQualityImprovementSpeedIsIncreased() {
+    fun updateQualityAfterSellInCheckQualityImprovementSpeedIsIncreased() {
         testItem.sellIn = 0
-        val previousQualityValue = testItem.quality
 
         gildedRose.updateQuality()
 
         Assertions.assertEquals(
-                previousQualityValue + GildedRose.QUALITY_DEGRADATION_DEFAULT_AFTER_SELL_IN,
+                QUALITY + GildedRose.QUALITY_DEGRADATION_DEFAULT_AFTER_SELL_IN,
                 testItem.quality
         )
     }
