@@ -42,7 +42,7 @@ class BackstagePassTest {
     fun updateQuality_Before_SellIn_Check_Quality_Improvement_Speed_Is_Default() {
         gildedRose.updateQuality()
         assertEquals(
-                QUALITY + GildedRose.QUALITY_DEGRADATION_DEFAULT,
+                QUALITY + QUALITY_CHANGE,
                 testItem.quality
         )
     }
@@ -52,7 +52,7 @@ class BackstagePassTest {
         testItem.sellIn = SELL_IN_YELLOW_ZONE
         gildedRose.updateQuality()
         assertEquals(
-                QUALITY + GildedRose.QUALITY_DEGRADATION_DEFAULT * 2,
+                QUALITY + QUALITY_CHANGE * 2,
                 testItem.quality
         )
     }
@@ -62,7 +62,7 @@ class BackstagePassTest {
         testItem.sellIn = SELL_IN_RED_ZONE
         gildedRose.updateQuality()
         assertEquals(
-                QUALITY + GildedRose.QUALITY_DEGRADATION_DEFAULT * 3,
+                QUALITY + QUALITY_CHANGE * 3,
                 testItem.quality
         )
     }
@@ -81,5 +81,6 @@ class BackstagePassTest {
         private const val SELL_IN_YELLOW_ZONE = 10
         private const val SELL_IN_RED_ZONE = 5
         private const val QUALITY = 10
+        private const val QUALITY_CHANGE = 1
     }
 }

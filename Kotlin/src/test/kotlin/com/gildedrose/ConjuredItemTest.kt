@@ -42,7 +42,7 @@ class ConjuredItemTest {
         gildedRose.updateQuality()
 
         assertEquals(
-                QUALITY - GildedRose.QUALITY_DEGRADATION_DEFAULT * 2,
+                QUALITY + QUALITY_CHANGE * 2,
                 testItem.quality
         )
     }
@@ -53,7 +53,7 @@ class ConjuredItemTest {
         gildedRose.updateQuality()
 
         assertEquals(
-                QUALITY - GildedRose.QUALITY_DEGRADATION_DEFAULT_AFTER_SELL_IN * 2,
+                QUALITY + QUALITY_CHANGE * 4,
                 testItem.quality
         )
     }
@@ -61,5 +61,6 @@ class ConjuredItemTest {
     companion object {
         private const val SELL_IN = 5
         private const val QUALITY = 10
+        private const val QUALITY_CHANGE = -1
     }
 }

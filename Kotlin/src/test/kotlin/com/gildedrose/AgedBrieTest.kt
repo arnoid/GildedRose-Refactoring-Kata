@@ -42,7 +42,7 @@ class AgedBrieTest {
         gildedRose.updateQuality()
 
         Assertions.assertEquals(
-                QUALITY + GildedRose.QUALITY_DEGRADATION_DEFAULT,
+                QUALITY + QUALITY_CHANGE,
                 testItem.quality
         )
     }
@@ -54,7 +54,7 @@ class AgedBrieTest {
         gildedRose.updateQuality()
 
         Assertions.assertEquals(
-                QUALITY + GildedRose.QUALITY_DEGRADATION_DEFAULT_AFTER_SELL_IN,
+                QUALITY + QUALITY_CHANGE * 2,
                 testItem.quality
         )
     }
@@ -62,5 +62,6 @@ class AgedBrieTest {
     companion object {
         private const val SELL_IN = 5
         private const val QUALITY = 10
+        private const val QUALITY_CHANGE = 1
     }
 }
