@@ -34,13 +34,27 @@ class SulfurasTest {
     }
 
     @Test
+    fun updateQuality_Above_Allowed_Level_Check_Quality_Is_Not_Changing() {
+        testItem.quality = 80
+        gildedRose.updateQuality()//should not change
+        assertEquals(80, testItem.quality)
+    }
+
+    @Test
     fun updateQuality_After_SellIn_Check_Quality_Is_Not_Changing() {
         testItem.sellIn = 0
-
         gildedRose.updateQuality()
-
         assertEquals(QUALITY, testItem.quality)
     }
+
+    @Test
+    fun updateQuality_After_SellIn_And_Quality_Above_Allowed_Level_Check_Quality_Is_Not_Changing() {
+        testItem.quality = 80
+        testItem.sellIn = -1
+        gildedRose.updateQuality()
+        assertEquals(80, testItem.quality)
+    }
+
 
     companion object {
         private const val SELL_IN = 5
