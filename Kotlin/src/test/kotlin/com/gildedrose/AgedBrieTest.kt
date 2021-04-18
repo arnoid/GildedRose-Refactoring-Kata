@@ -23,7 +23,7 @@ class AgedBrieTest {
     }
 
     @Test
-    fun updateQuality_Check_SellIn_Degrades() {
+    fun when_updateQuality_Then_SellIn_Degrades() {
         testItem.sellIn = 1
         gildedRose.updateQuality()//should drop to zero
         Assertions.assertEquals(0, testItem.sellIn)
@@ -32,7 +32,7 @@ class AgedBrieTest {
     }
 
     @Test
-    fun updateQuality_Check_Quality_Is_Not_Greater_Than_50() {
+    fun when_updateQuality_Then_Quality_Is_Not_Greater_Than_50() {
         testItem.quality = 49
         gildedRose.updateQuality()//should increment
         Assertions.assertEquals(50, testItem.quality)
@@ -41,7 +41,7 @@ class AgedBrieTest {
     }
 
     @Test
-    fun updateQuality_Before_SellIn_Check_Quality_Improvement_Speed_Is_Default() {
+    fun when_updateQuality_Before_SellIn_Then_Quality_Improvement_Speed_Is_Default() {
         gildedRose.updateQuality()
 
         Assertions.assertEquals(
@@ -51,7 +51,7 @@ class AgedBrieTest {
     }
 
     @Test
-    fun updateQuality_After_SellIn_Check_Quality_Improvement_Speed_Is_Increased() {
+    fun when_updateQuality_After_SellIn_Then_Quality_Improvement_Speed_Is_Increased() {
         testItem.sellIn = 0
 
         gildedRose.updateQuality()
