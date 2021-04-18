@@ -1,5 +1,7 @@
 package com.gildedrose
 
+import com.gildedrose.item.repository.ItemRepository
+import com.gildedrose.item.repository.ItemType
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -7,11 +9,12 @@ import org.junit.jupiter.api.Test
 class ConjuredItemTest {
 
     lateinit var gildedRose: GildedRose
-    lateinit var testItem: Item
+    lateinit var testItem: ItemAdapter
 
     @BeforeEach
     fun before() {
-        testItem = ItemsLibrary.CONJURED_MANA_CAKE.toItem(
+        testItem = ItemRepository().produceItemAdapter(
+                itemType = ItemType.CONJURED_MANA_CAKE,
                 sellIn = SELL_IN,
                 quality = QUALITY
         )

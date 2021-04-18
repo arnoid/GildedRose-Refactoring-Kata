@@ -1,20 +1,26 @@
 package com.gildedrose
 
+import com.gildedrose.item.repository.ItemRepository
+import com.gildedrose.item.repository.ItemType
+
 fun main(args: Array<String>) {
 
     println("OMGHAI!")
 
+    val itemRepository = ItemRepository()
+
+
     val items = arrayOf(
-            ItemsLibrary.PLUS_5_DEXTERITY_VEST.toItem(10, 20), //
-            ItemsLibrary.AGED_BRIE.toItem(2, 0), //
-            ItemsLibrary.ELIXIR_OF_THE_MONGOOSE.toItem(5, 7), //
-            ItemsLibrary.SULFURAS_HAND_OF_RAGNAROS.toItem(0, 80), //
-            ItemsLibrary.SULFURAS_HAND_OF_RAGNAROS.toItem(-1, 80),
-            ItemsLibrary.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.toItem(15, 20),
-            ItemsLibrary.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.toItem(10, 49),
-            ItemsLibrary.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.toItem(5, 49),
+            itemRepository.produceItemAdapter(ItemType.PLUS_5_DEXTERITY_VEST, 10, 20), //
+            itemRepository.produceItemAdapter(ItemType.AGED_BRIE, 2, 0), //
+            itemRepository.produceItemAdapter(ItemType.ELIXIR_OF_THE_MONGOOSE, 5, 7), //
+            itemRepository.produceItemAdapter(ItemType.SULFURAS_HAND_OF_RAGNAROS, 0, 80), //
+            itemRepository.produceItemAdapter(ItemType.SULFURAS_HAND_OF_RAGNAROS, -1, 80),
+            itemRepository.produceItemAdapter(ItemType.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 15, 20),
+            itemRepository.produceItemAdapter(ItemType.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 10, 49),
+            itemRepository.produceItemAdapter(ItemType.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 5, 49),
             // this conjured item does not work properly yet
-            ItemsLibrary.CONJURED_MANA_CAKE.toItem(3, 6)
+            itemRepository.produceItemAdapter(ItemType.CONJURED_MANA_CAKE, 3, 6)
     )
 
     val app = GildedRose(items)

@@ -1,22 +1,23 @@
 package com.gildedrose
 
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.*
+import com.gildedrose.item.repository.ItemRepository
+import com.gildedrose.item.repository.ItemType
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class BackstagePassTest {
 
     lateinit var gildedRose: GildedRose
-    lateinit var testItem: Item
+    lateinit var testItem: ItemAdapter
 
     @BeforeEach
     fun before() {
-        testItem = ItemsLibrary.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.toItem(
+        testItem = ItemRepository().produceItemAdapter(
+                itemType = ItemType.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT,
                 sellIn = SELL_IN,
                 quality = QUALITY
         )
-
         gildedRose = GildedRose(arrayOf(testItem))
     }
 
@@ -49,7 +50,7 @@ class BackstagePassTest {
 
     @Test
     fun updateQuality_SellIn_YellowZone_Check_Quality_Improvement_Speed_Is_Doubled() {
-        testItem.sellIn = SELL_IN_YELLOW_ZONE
+        testItem.sellIn = SELL_IN_STAGE_YELLOW_ZONE
         gildedRose.updateQuality()
         assertEquals(
                 QUALITY + QUALITY_CHANGE * 2,
@@ -59,7 +60,7 @@ class BackstagePassTest {
 
     @Test
     fun updateQuality_SellIn_RedZone_Check_Quality_Improvement_Speed_Is_Tripled() {
-        testItem.sellIn = SELL_IN_RED_ZONE
+        testItem.sellIn = SELL_IN_STAGE_RED_ZONE
         gildedRose.updateQuality()
         assertEquals(
                 QUALITY + QUALITY_CHANGE * 3,
@@ -78,9 +79,9 @@ class BackstagePassTest {
 
     companion object {
         private const val SELL_IN = 15
-        private const val SELL_IN_YELLOW_ZONE = 10
-        private const val SELL_IN_RED_ZONE = 5
         private const val QUALITY = 10
         private const val QUALITY_CHANGE = 1
+        private const val SELL_IN_STAGE_RED_ZONE = 5
+        private const val SELL_IN_STAGE_YELLOW_ZONE = 10
     }
 }
