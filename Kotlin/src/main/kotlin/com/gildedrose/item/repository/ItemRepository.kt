@@ -4,7 +4,6 @@ import com.gildedrose.Item
 import com.gildedrose.ItemAdapter
 import com.gildedrose.item.strategy.DefaultItemQualityStrategy
 import com.gildedrose.item.strategy.LegendaryItemQualityStrategy
-import com.gildedrose.item.strategy.MultiplierItemQualityStrategy
 import com.gildedrose.item.strategy.StagedSellInItemQualityStrategy
 
 /**
@@ -27,9 +26,8 @@ class ItemRepository {
                 hasQualityAfterSellIn = false,
                 sellInStages = listOf(10, 5)
         )
-        ItemType.CONJURED_MANA_CAKE -> MultiplierItemQualityStrategy(
-                multiplier = 2,//Represents Double rate for quality change. We can use Default strategy and quality change = -2
-                qualityChange = -1,
+        ItemType.CONJURED_MANA_CAKE -> DefaultItemQualityStrategy(
+                qualityChange = -2,
                 hasQualityAfterSellIn = true
         )
         ItemType.ELIXIR_OF_THE_MONGOOSE -> DefaultItemQualityStrategy(
